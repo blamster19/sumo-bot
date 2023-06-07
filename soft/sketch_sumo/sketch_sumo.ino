@@ -46,3 +46,7 @@ bool readLine(int pin) {
 bool readShock() {
 	return digitalRead(SHOCK_PIN) == HIGH;
 }
+
+int readSonic(NewPing sonar) {
+	return sonar.ping_cm() + 1;// sensor gives distance 1 cm shorter then real value
+}
