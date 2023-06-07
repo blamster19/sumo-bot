@@ -33,10 +33,11 @@ void setup() {
 	pinMode(LINE_PIN5, INPUT);
 	pinMode(LINE_PIN6, INPUT);
 	pinMode(SHOCK_PIN, INPUT);
+	Serial.begin(9600);
 }
 
 void loop() {
-
+	testLineSensors();
 }
 
 bool readLine(int pin) {
@@ -45,4 +46,16 @@ bool readLine(int pin) {
 
 bool readShock() {
 	return digitalRead(SHOCK_PIN) == HIGH;
+}
+
+void testLineSensors() {
+	for(int i = 0; i < 6; i++) {
+		Serial.print("Sensor ");
+		Serial.print(i);
+		Serial.print(": ");
+		Serial.print(readLine(LINE_PIN1 + i));// black 1
+		Serial.print("   ");
+	}
+	Serial.print("\n");
+	delay(30);
 }
