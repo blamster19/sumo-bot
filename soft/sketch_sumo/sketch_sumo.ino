@@ -1,5 +1,6 @@
 #include <NewPing.h>
 #include <IRremote.h>
+#include <CytronMotorDriver.h>
 
 #define SONIC_TRIGGER1 1
 #define SONIC_TRIGGER2 2
@@ -15,6 +16,10 @@
 #define LINE_PIN5      12
 #define LINE_PIN6      13
 #define SHOCK_PIN      14
+#define MOTOR_PWM_1    15
+#define MOTOR_DIR_1    16
+#define MOTOR_PWM_2    17
+#define MOTOR_DIR_2    18
 
 #define MAX_SONIC      50
 
@@ -23,6 +28,8 @@ NewPing sonar2(SONIC_TRIGGER2, SONIC_ECHO2, MAX_SONIC);
 NewPing sonar3(SONIC_TRIGGER3, SONIC_ECHO3, MAX_SONIC);
 IRrecv  irrecv(IR_PIN);
 decode_results ir1;
+CytronMD motortL(PWM_DIR, MOTOR_PWM_1, MOTOR_DIR_1);
+CytronMD motortR(PWM_DIR, MOTOR_PWM_2, MOTOR_DIR_2);
 
 void setup() {
 	irrecv.enableIRIn();
