@@ -37,7 +37,7 @@ void setup() {
 }
 
 void loop() {
-	testLineSensors();
+	testSonicSensors();
 }
 
 bool readLine(int pin) {
@@ -58,4 +58,15 @@ void testLineSensors() {
 	}
 	Serial.print("\n");
 	delay(30);
+}
+
+void testSonicSensors() {
+	Serial.print("Sonic 1: ");
+	Serial.print(sonar1.ping_cm());
+	Serial.print(" cm    Sonic 2: ");
+	Serial.print(sonar2.ping_cm());
+	Serial.print(" cm    Sonic 3: ");
+	Serial.print(sonar3.ping_cm());
+	Serial.print("\n");
+	delay(50);
 }
