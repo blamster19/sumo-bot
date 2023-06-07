@@ -49,5 +49,8 @@ void loop() {
     // Jeśli wykryto czarny kolor na czujniku odbiciowym 0 (lewy przód)
     if (sensorValues[0] == LOW) {
       // Wykonaj odpowiednie operacje sterujące silnikami, aby skręcić w lewo
-      motor.motorSpeed(MD_MOTOR_1, MD_CW, 100);  // Przykładowa prędkość silnika 1
-      motor.motorSpeed(MD_MOTOR_2, MD_CCW, 100); // Przykładowa prędko
+      motor.setSpeed(MD_MOTOR_1, MD_CW, 100);  // Przykładowa prędkość silnika 1
+      motor.setSpeed(MD_MOTOR_2, MD_CCW, 100); // Przykładowa prędko
+	}
+	}
+}
