@@ -48,6 +48,10 @@ bool readShock() {
 	return digitalRead(SHOCK_PIN) == HIGH;
 }
 
+int readSonic(NewPing sonar) {
+	return sonar.ping_cm() + 1;
+}
+
 void testLineSensors() {
 	for(int i = 0; i < 6; i++) {
 		Serial.print("Sensor ");
@@ -62,11 +66,11 @@ void testLineSensors() {
 
 void testSonicSensors() {
 	Serial.print("Sonic 1: ");
-	Serial.print(sonar1.ping_cm());
+	Serial.print(readSonic(sonar1));
 	Serial.print(" cm    Sonic 2: ");
-	Serial.print(sonar2.ping_cm());
+	Serial.print(readSonic(sonar2));
 	Serial.print(" cm    Sonic 3: ");
-	Serial.print(sonar3.ping_cm());
+	Serial.print(readSonic(sonar3));
 	Serial.print("\n");
 	delay(50);
 }
