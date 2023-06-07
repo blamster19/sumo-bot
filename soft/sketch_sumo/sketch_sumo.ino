@@ -28,8 +28,8 @@ NewPing sonar2(SONIC_TRIGGER2, SONIC_ECHO2, MAX_SONIC);
 NewPing sonar3(SONIC_TRIGGER3, SONIC_ECHO3, MAX_SONIC);
 IRrecv  irrecv(IR_PIN);
 decode_results ir1;
-CytronMD motortL(PWM_DIR, MOTOR_PWM_1, MOTOR_DIR_1);
-CytronMD motortR(PWM_DIR, MOTOR_PWM_2, MOTOR_DIR_2);
+CytronMD motorL(PWM_DIR, MOTOR_PWM_1, MOTOR_DIR_1);
+CytronMD motorR(PWM_DIR, MOTOR_PWM_2, MOTOR_DIR_2);
 
 void setup() {
 	irrecv.enableIRIn();
