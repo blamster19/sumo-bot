@@ -16,10 +16,10 @@
 #define LINE_PIN5      12
 #define LINE_PIN6      13
 #define SHOCK_PIN      14
-#define MOTOR_PWM_1    15
-#define MOTOR_DIR_1    16
-#define MOTOR_PWM_2    17
-#define MOTOR_DIR_2    18
+#define MOTOR_PWM_1    3
+#define MOTOR_DIR_1    4
+#define MOTOR_PWM_2    9
+#define MOTOR_DIR_2    10
 
 #define MAX_SONIC      50
 
