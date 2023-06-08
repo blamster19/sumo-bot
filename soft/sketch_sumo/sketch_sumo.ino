@@ -1,27 +1,7 @@
 #include <NewPing.h>
 #include <IRremote.h>
 #include <CytronMotorDriver.h>
-
-#define SONIC_TRIGGER1 1
-#define SONIC_TRIGGER2 2
-#define SONIC_TRIGGER3 3
-#define SONIC_ECHO1    4
-#define SONIC_ECHO2    5
-#define SONIC_ECHO3    6
-#define IR_PIN         7
-#define LINE_PIN1      8
-#define LINE_PIN2      9
-#define LINE_PIN3      10
-#define LINE_PIN4      11
-#define LINE_PIN5      12
-#define LINE_PIN6      13
-#define SHOCK_PIN      14
-#define MOTOR_PWM_1    3
-#define MOTOR_DIR_1    4
-#define MOTOR_PWM_2    9
-#define MOTOR_DIR_2    10
-
-#define MAX_SONIC      50
+#include "pinDefinitions.h"
 
 NewPing sonar1(SONIC_TRIGGER1, SONIC_ECHO1, MAX_SONIC);
 NewPing sonar2(SONIC_TRIGGER2, SONIC_ECHO2, MAX_SONIC);
@@ -30,6 +10,7 @@ IRrecv  irrecv(IR_PIN);
 decode_results ir1;
 CytronMD motorL(PWM_DIR, MOTOR_PWM_1, MOTOR_DIR_1);
 CytronMD motorR(PWM_DIR, MOTOR_PWM_2, MOTOR_DIR_2);
+
 
 void setup() {
 	irrecv.enableIRIn();
@@ -46,29 +27,3 @@ void loop() {
 
 }
 
-bool readLine(int pin) {
-	return digitalRead(pin) == HIGH;
-}
-
-bool readShock() {
-	return digitalRead(SHOCK_PIN) == HIGH;
-}
-
-int readSonic(NewPing sonar) {
-	return sonar.ping_cm() + 1;// sensor gives distance 1 cm shorter than real value
-}
-
-void goForward(int speed) {
-	motorL.setSpeed(speed);
-	motorR.setSpeed(speed);
-}
-
-void goTurn(int speed) {
-	motorL.setSpeed(speed);
-	motorR.setSpeed(-speed);
-}
-
-void goArc(int speed, int delta) {
-	motorL.setSpeed(speed + delta);
-	motorR.setSpeed(speed - delta);
-}
