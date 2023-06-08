@@ -57,3 +57,18 @@ bool readShock() {
 int readSonic(NewPing sonar) {
 	return sonar.ping_cm() + 1;// sensor gives distance 1 cm shorter then real value
 }
+
+void goForward(int speed) {
+	motorL.setSpeed(speed);
+	motorR.setSpeed(speed);
+}
+
+void goTurn(int speed) {
+	motorL.setSpeed(speed);
+	motorR.setSpeed(-speed);
+}
+
+void goArc(int speed, int delta) {
+	motorL.setSpeed(speed + delta);
+	motorR.setSpeed(speed - delta);
+}
