@@ -1,0 +1,41 @@
+state = ROAM
+lineSide
+
+start
+	checkLine(->lineSide)
+	if(onLine)
+		state = BACKOFF
+	switch state
+		case FIND
+			rotate(dtheta)
+			checkSonicF
+			if(foundEnemyF())
+				state = ATTACK
+				skip
+			checkSonicL
+			if(foundEnemyL())
+				rotate(left90)
+				state = ATTACK
+				skip
+			checkSonicR
+			if(foundEnemyR())
+				rotate(right90)
+				state = ATTACK
+				skip
+			state = ROAM
+		case ATTACK
+			forward
+		case BACKOFF
+			switch lineSide
+				case LEFT_FRONT
+					escapeRightBack
+				case RIGHT_FRONT
+					escapeRightBack
+				case LEFT_BACK
+					escapeRightForward
+				case RIGHT_BACK
+					escapeRightForward
+		case ROAM
+			arc
+			state = FIND
+end
