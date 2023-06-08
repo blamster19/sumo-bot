@@ -55,7 +55,7 @@ bool readShock() {
 }
 
 int readSonic(NewPing sonar) {
-	return sonar.ping_cm() + 1;// sensor gives distance 1 cm shorter then real value
+	return sonar.ping_cm() + 1;// sensor gives distance 1 cm shorter than real value
 }
 
 void goForward(int speed) {
