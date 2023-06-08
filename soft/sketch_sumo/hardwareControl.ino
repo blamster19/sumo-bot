@@ -1,5 +1,5 @@
 // SENSORS
-bool readLine(int pin) {
+bool readLine(byte pin) {
 	return digitalRead(pin) == HIGH;
 }
 
@@ -12,17 +12,27 @@ int readSonic(NewPing sonar) {
 }
 
 // MOTORS
-void goForward(int speed) {
+void goForward(byte speed) {
 	motorL.setSpeed(speed);
 	motorR.setSpeed(speed);
 }
 
-void goTurn(int speed) {
+void goTurnR(byte speed) {
 	motorL.setSpeed(speed);
 	motorR.setSpeed(-speed);
 }
 
-void goArc(int speed, int delta) {
+void goArcR(byte speed, byte delta) {
 	motorL.setSpeed(speed + delta);
 	motorR.setSpeed(speed - delta);
+}
+
+void goTurnL(byte speed) {
+	motorL.setSpeed(-speed);
+	motorR.setSpeed(speed);
+}
+
+void goArcL(byte speed, byte delta) {
+	motorL.setSpeed(speed - delta);
+	motorR.setSpeed(speed + delta);
 }
