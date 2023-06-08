@@ -1,3 +1,6 @@
+#ifndef DEFINITIONS_H
+#define DEFINITIONS_H
+
 #define SONIC_TRIGGER1 1
 #define SONIC_TRIGGER2 2
 #define SONIC_TRIGGER3 3
