@@ -18,6 +18,6 @@
 #define MOTOR_PWM_1    3
 #define MOTOR_DIR_1    4
 #define MOTOR_PWM_2    9
-#define MOTOR_DIR_2    10
+#define MOTOR_DIR_2    7
 
 #define MAX_SONIC      50
