@@ -44,8 +44,7 @@ void setup() {
 }
 
 void loop() {
-	testMotorL();
-	testMotorR();
+	testIR();
 }
 
 bool readLine(int pin) {
@@ -89,4 +88,12 @@ void testMotorL() {
 
 void testMotorR() {
 	motorR.setSpeed(255);
+}
+
+void testIR() {
+	if(irrecv.decode(&ir1)) {
+		Serial.println(ir1.value, HEX);
+		irrecv.resume();
+	}
+	delay(10);
 }
