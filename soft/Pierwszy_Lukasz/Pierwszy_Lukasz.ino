@@ -1,7 +1,7 @@
 #include <CytronMotorDriver.h>
 #include <RC5.h>
 
-#define Podczerwien 14 // Definiowanie pinów odbiornika podczerwieni
+#define Podczerwien A0 // Definiowanie pinów odbiornika podczerwieni
 
 RC5 rc5(Podczerwien); //Informacja o podłączeniu odbiornika podczerwieni
 
