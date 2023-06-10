@@ -35,6 +35,10 @@ enum mode {
 mode state = ROAM;
 byte onOff = 0;
 
+#define sonarL sonar1
+#define sonarR sonar2
+#define sonarF sonar3
+
 void loop() {
 	if(irrecv.decode(&ir1)) {
 		onOff = onOff ? 0 : 1;
