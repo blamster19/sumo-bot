@@ -21,7 +21,7 @@
 #define MOTOR_PWM_2    6
 #define MOTOR_DIR_2    7
 
-#define MAX_SONIC      50
+#define MAX_SONIC      75
 
 NewPing sonar1(SONIC_TRIGGER1, SONIC_ECHO1, MAX_SONIC);
 NewPing sonar2(SONIC_TRIGGER2, SONIC_ECHO2, MAX_SONIC);
@@ -46,7 +46,7 @@ void setup() {
 byte flag = 0;
 
 void loop() {
-	testIRMotorsLine2();
+	testIRMotorsSonic();
 }
 
 bool readLine(int pin) {
@@ -184,4 +184,25 @@ void testIRMotorsLine2() {
 	delay(100);
 	Serial.print(digitalRead(LINE_PIN1));
 	Serial.println(digitalRead(LINE_PIN2));
+}
+
+void testIRMotorsSonic() {
+	if(irrecv.decode(&ir1)) {
+		flag = flag ? 0 : 1;
+		irrecv.resume();
+	}
+	if(flag) {
+		if(readSonic(sonar1) > 1) {
+			motorR.setSpeed(255);
+			motorL.setSpeed(-255);
+		} else {
+			motorR.setSpeed(0);
+			motorL.setSpeed(0);
+		}
+	} else {
+		motorR.setSpeed(0);
+		motorL.setSpeed(0);
+	}
+	Serial.println(readSonic(sonar1));
+	delay(75);
 }
