@@ -1,8 +1,30 @@
-void mainLoop() {
-	
-}
-
 #define maxSpeed 255
+
+void mainLoop() {
+	switch(state) {
+		case FIND:
+			if(readSonic(sonarF) > 1) {
+				state = ATTACK;
+				break;
+			}
+			if(readSonic(sonarL) > 1) {
+				while(readSonic(sonarF) == 1) {
+					goTurnL(maxSpeed);
+				}
+				state = ATTACK;
+				break;
+			}
+			if(readSonic(sonarR) > 1) {
+				while(readSonic(sonarR) == 1) {
+					goTurnR(maxSpeed);
+				}
+				state = ATTACK;
+				break;
+			}
+			state = ROAM;
+			break;
+	}
+}
 
 void avoidFront() {
 	goBackwards(-maxSpeed); // go back
