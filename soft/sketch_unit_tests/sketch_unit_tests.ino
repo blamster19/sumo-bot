@@ -8,7 +8,7 @@
 #define SONIC_ECHO1    9
 #define SONIC_ECHO2    11
 #define SONIC_ECHO3    13
-#define IR_PIN         14
+#define IR_PIN         A0
 #define LINE_PIN1      0
 #define LINE_PIN2      1
 #define LINE_PIN3      2
@@ -43,8 +43,10 @@ void setup() {
 	Serial.begin(9600);
 }
 
+byte flag = 0;
+
 void loop() {
-	testIR();
+	testIRMotors();
 }
 
 bool readLine(int pin) {
@@ -96,4 +98,19 @@ void testIR() {
 		irrecv.resume();
 	}
 	delay(10);
+}
+
+void testIRMotors() {
+	if(irrecv.decode(&ir1)) {
+		flag = flag ? 0 : 1;
+		irrecv.resume();
+	}
+	if(flag) {
+		motorR.setSpeed(255);
+		motorL.setSpeed(255);
+	} else {
+		motorR.setSpeed(0);
+		motorL.setSpeed(0);
+	}
+	delay(100);
 }
