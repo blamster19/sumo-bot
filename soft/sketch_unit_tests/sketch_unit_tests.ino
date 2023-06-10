@@ -46,7 +46,7 @@ void setup() {
 byte flag = 0;
 
 void loop() {
-	testIRMotorsSonic();
+	testIRMotorsSonicRotation2();
 }
 
 bool readLine(int pin) {
@@ -204,5 +204,53 @@ void testIRMotorsSonic() {
 		motorL.setSpeed(0);
 	}
 	Serial.println(readSonic(sonar1));
+	delay(75);
+}
+
+void testIRMotorsSonicRotation() {
+	if(irrecv.decode(&ir1)) {
+		flag = flag ? 0 : 1;
+		irrecv.resume();
+	}
+	if(flag) {
+		if(readSonic(sonar1) > 1) {
+			motorR.setSpeed(255);
+			motorL.setSpeed(255);
+			delay(175);
+		} else {
+			motorR.setSpeed(0);
+			motorL.setSpeed(0);
+		}
+	} else {
+		motorR.setSpeed(0);
+		motorL.setSpeed(0);
+	}
+	Serial.println(readSonic(sonar1));
+	delay(75);
+}
+
+void testIRMotorsSonicRotation2() {
+	if(irrecv.decode(&ir1)) {
+		flag = flag ? 0 : 1;
+		irrecv.resume();
+	}
+	if(flag) {
+		if(readSonic(sonar1) > 1) {
+			motorR.setSpeed(255);
+			motorL.setSpeed(-255);
+		} else if(readSonic(sonar2) > 1) {
+			motorR.setSpeed(255);
+			motorL.setSpeed(255);
+		} else if(readSonic(sonar3) > 1) {
+			motorR.setSpeed(-255);
+			motorL.setSpeed(-255);
+		} else {
+			motorR.setSpeed(0);
+			motorL.setSpeed(0);
+		}
+	} else {
+		motorR.setSpeed(0);
+		motorL.setSpeed(0);
+	}
 	delay(75);
 }
