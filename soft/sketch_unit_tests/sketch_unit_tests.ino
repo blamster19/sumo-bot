@@ -46,7 +46,7 @@ void setup() {
 byte flag = 0;
 
 void loop() {
-	testIRMotors();
+	testIRMotorsLine();
 }
 
 bool readLine(int pin) {
@@ -107,10 +107,37 @@ void testIRMotors() {
 	}
 	if(flag) {
 		motorR.setSpeed(255);
-		motorL.setSpeed(255);
+		motorL.setSpeed(-255);
 	} else {
 		motorR.setSpeed(0);
 		motorL.setSpeed(0);
 	}
 	delay(100);
+}
+
+void testIRMotorsLine() {
+	if(irrecv.decode(&ir1)) {
+		flag = flag ? 0 : 1;
+		irrecv.resume();
+	}
+	if(flag) {
+		if(readLine(LINE_PIN1) && readLine(LINE_PIN2)) {// black
+			motorR.setSpeed(255);
+			motorL.setSpeed(-255);
+		} else if(readLine(LINE_PIN1) && !readLine(LINE_PIN2)) {
+			motorR.setSpeed(255);
+			motorL.setSpeed(-128);
+		} else if(!readLine(LINE_PIN1) && readLine(LINE_PIN2)) {
+			motorR.setSpeed(128);
+			motorL.setSpeed(-255);
+		} else {
+			motorR.setSpeed(-255);
+			motorL.setSpeed(256);
+		}
+	} else {
+		motorR.setSpeed(0);
+		motorL.setSpeed(0);
+	}
+	delay(100);
+	
 }
