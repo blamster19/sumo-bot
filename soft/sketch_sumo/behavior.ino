@@ -3,25 +3,25 @@
 void mainLoop() {
 	switch(state) {
 		case FIND:
-			if(readSonic(sonarF) > 1) {
+			if(readSonic(sonarF) > 1) { // if enemy in front of
 				state = ATTACK;
 				break;
 			}
-			if(readSonic(sonarL) > 1) {
+			if(readSonic(sonarL) > 1) { // if enemy on the left
 				while(readSonic(sonarF) == 1) {
 					goTurnL(maxSpeed);
 				}
 				state = ATTACK;
 				break;
 			}
-			if(readSonic(sonarR) > 1) {
+			if(readSonic(sonarR) > 1) { // if enemy on the right
 				while(readSonic(sonarR) == 1) {
 					goTurnR(maxSpeed);
 				}
 				state = ATTACK;
 				break;
 			}
-			state = ROAM;
+			state = ROAM; // else wander
 			break;
 		case ATTACK:
 			goForward(maxSpeed);
