@@ -23,6 +23,13 @@ void mainLoop() {
 			}
 			state = ROAM;
 			break;
+		case ATTACK:
+			goForward(maxSpeed);
+			break;
+		case ROAM:
+			goArcL(maxSpeed - 10, 10);
+			state = FIND;
+			break;
 	}
 }
 
