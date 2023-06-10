@@ -14,16 +14,38 @@ CytronMD motorR(PWM_DIR, MOTOR_PWM_2, MOTOR_DIR_2);
 
 void setup() {
 	irrecv.enableIRIn();
-	pinMode(LINE_PIN1, INPUT);
-	pinMode(LINE_PIN2, INPUT);
+	pinMode(LINE_PIN1, INPUT_PULLUP);
+	pinMode(LINE_PIN2, INPUT_PULLUP);
 	pinMode(LINE_PIN3, INPUT);
 	pinMode(LINE_PIN4, INPUT);
 	pinMode(LINE_PIN5, INPUT);
 	pinMode(LINE_PIN6, INPUT);
 	pinMode(SHOCK_PIN, INPUT);
+	attachInterrupt(digitalPinToInterrupt(LINE_PIN1), avoidFrontLeft, LOW);
+	attachInterrupt(digitalPinToInterrupt(LINE_PIN2), avoidFrontRight, LOW);
 }
 
-void loop() {
+enum mode {
+	ROAM,
+	BACKOFF,
+	ATTACK,
+	FIND
+};
 
+mode state = ROAM;
+byte onOff = 0;
+
+void loop() {
+	if(irrecv.decode(&ir1)) {
+		onOff = onOff ? 0 : 1;
+		irrecv.resume();
+	}
+	if(onOff) {
+		mainLoop();
+	} else {
+		motorR.setSpeed(0);
+		motorL.setSpeed(0);
+	}
+	delay(75);
 }
 
