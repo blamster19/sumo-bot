@@ -17,6 +17,11 @@ void goForward(byte speed) {
 	motorR.setSpeed(speed);
 }
 
+void goBackwards(byte speed) {
+	motorL.setSpeed(-speed);
+	motorR.setSpeed(-speed);
+}
+
 void goTurnR(byte speed) {
 	motorL.setSpeed(speed);
 	motorR.setSpeed(-speed);

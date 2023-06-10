@@ -5,7 +5,7 @@ void mainLoop() {
 #define maxSpeed 255
 
 void avoidFront() {
-	goForward(-maxSpeed); // go back
+	goBackwards(-maxSpeed); // go back
 	delay(1500);
 	goTurnR(maxSpeed); // turn around
 	delay(350);
