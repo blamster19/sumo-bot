@@ -46,7 +46,7 @@ void setup() {
 byte flag = 0;
 
 void loop() {
-	testIRMotorsLine();
+	testIRMotorsLine2();
 }
 
 bool readLine(int pin) {
@@ -112,7 +112,7 @@ void testIRMotors() {
 		motorR.setSpeed(0);
 		motorL.setSpeed(0);
 	}
-	delay(100);
+	delay(75);
 }
 
 void testIRMotorsLine() {
@@ -140,4 +140,48 @@ void testIRMotorsLine() {
 	}
 	delay(100);
 	
+}
+
+#define motorP motorR
+#define okoPrzedPrawe LINE_PIN2
+#define okoPrzedLewe LINE_PIN1
+
+void testIRMotorsLine2() {
+	if(irrecv.decode(&ir1)) {
+		flag = flag ? 0 : 1;
+		irrecv.resume();
+	}
+	if(flag) {
+	
+	
+   motorL.setSpeed(-255);       // po prostu rusza z miejsca i sobie jedzie
+   motorP.setSpeed(255);
+
+   if (digitalRead(okoPrzedLewe) == LOW) {   // jesli wykryje lewe oko biala linie, to skreca w prawo
+     motorP.setSpeed(-255);
+     delay(350);
+   }
+   if (digitalRead(okoPrzedPrawe) == LOW) {  // analogicznie jak powyzej
+     motorL.setSpeed(255);
+     delay(350);
+   }
+    if ((digitalRead(okoPrzedLewe) == LOW) && (digitalRead(okoPrzedPrawe) == LOW) ) { // jesli wykrywa oboma oczami biel z przodu
+     motorL.setSpeed(-255);    //cofa sie
+     motorP.setSpeed(-255);
+     delay(1500);
+    
+     motorP.setSpeed(-255);      // skreca w prawo
+     motorL.setSpeed(255);
+     delay(350);
+    }
+
+
+
+	} else {
+		motorR.setSpeed(0);
+		motorL.setSpeed(0);
+	}
+	delay(100);
+	Serial.print(digitalRead(LINE_PIN1));
+	Serial.println(digitalRead(LINE_PIN2));
 }
