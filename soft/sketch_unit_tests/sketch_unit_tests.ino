@@ -13,9 +13,9 @@
 #define LINE_PIN2      1
 #define LINE_PIN3      2
 #define LINE_PIN4      3
-#define LINE_PIN5      15
-#define LINE_PIN6      16
-#define SHOCK_PIN      17
+#define LINE_PIN5      A1
+#define LINE_PIN6      A2
+#define SHOCK_PIN      A3
 #define MOTOR_PWM_1    5
 #define MOTOR_DIR_1    4
 #define MOTOR_PWM_2    6
