@@ -1,7 +1,7 @@
 #include <CytronMotorDriver.h>
 #include <RC5.h>
 
-#define Podczerwien 3 // Definiowanie pinów odbiornika podczerwieni
+#define Podczerwien 14 // Definiowanie pinów odbiornika podczerwieni
 
 RC5 rc5(Podczerwien); //Informacja o podłączeniu odbiornika podczerwieni
 
@@ -11,12 +11,12 @@ byte command;
 byte toggle;
  
 // Definiowanie pinów czujników odbiciowych
-#define okoPrzedLewe      8
-#define okoPrzedPrawe     9
-#define oko3              10
-#define oko4              11
-#define oko5              12
-#define oko6              13
+#define okoPrzedLewe      0
+#define okoPrzedPrawe     1
+#define oko3              2
+#define oko4              3
+#define oko5              15
+#define oko6              16
 
 // Definiowanie obiektów silników 
 // CytronMD motorL(PWM_DIR, MOTOR_PWM_1, MOTOR_DIR_1);
