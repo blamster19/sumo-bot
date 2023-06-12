@@ -8,13 +8,8 @@
 #define SONIC_ECHO2    11
 #define SONIC_ECHO3    13
 #define IR_PIN         A0
-#define LINE_PIN1      0
-#define LINE_PIN2      1
-#define LINE_PIN3      2
-#define LINE_PIN4      3
-#define LINE_PIN5      A1
-#define LINE_PIN6      A2
-#define SHOCK_PIN      A3
+#define LINE_PIN1      2
+#define LINE_PIN2      3
 #define MOTOR_PWM_1    5
 #define MOTOR_DIR_1    4
 #define MOTOR_PWM_2    6
