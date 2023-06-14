@@ -8,23 +8,20 @@ void mainLoop() {
 				break;
 			}
 			if(readSonic(sonarL) > 1) { // if enemy on the left
-				while(readSonic(sonarF) == 1) {
-					goTurnL(maxSpeed);
-				}
-				state = ATTACK;
+				goTurnL(maxSpeed);
+				state = FIND;
 				break;
 			}
 			if(readSonic(sonarR) > 1) { // if enemy on the right
-				while(readSonic(sonarR) == 1) {
-					goTurnR(maxSpeed);
-				}
-				state = ATTACK;
+				goTurnR(maxSpeed);
+				state = FIND;
 				break;
 			}
 			state = ROAM; // else wander
 			break;
 		case ATTACK:
 			goForward(maxSpeed);
+			state = FIND;
 			break;
 		case ROAM:
 			goArcL(maxSpeed - 10, 10);
