@@ -43,7 +43,7 @@ void avoidFrontLeft() {
 	if(onOff) {
 		if(readLine(LINE_PIN2)) {
 			goTurnR(maxSpeed); // turn right
-			delay(350);
+			delay(850);
 		} else {
 			avoidFront(); // both sensors see the line
 		}
@@ -54,7 +54,7 @@ void avoidFrontRight() {
 	if(onOff) {
 		if(readLine(LINE_PIN1)) {
 			goTurnL(maxSpeed); // turn left
-			delay(350);
+			delay(850);
 		} else {
 			avoidFront(); // both sensors see the line
 		}
