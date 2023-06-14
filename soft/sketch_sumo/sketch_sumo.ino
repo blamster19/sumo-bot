@@ -33,7 +33,9 @@ byte onOff = 0;
 
 void loop() {
 	if(irrecv.decode(&ir1)) {
-		onOff = onOff ? 0 : 1;
+		if(ir1.value == 4294967295) {
+			onOff = onOff ? 0 : 1;
+		}
 		irrecv.resume();
 	}
 	if(onOff) {
