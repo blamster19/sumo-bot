@@ -9,17 +9,17 @@ int readSonic(NewPing sonar) {
 
 // MOTORS
 void goForward(byte speed) {
-	motor(1, FORWARD, speed);
-	motor(2, BACKWARD, speed);
-}
-
-void goBackwards(byte speed) {
 	motor(1, BACKWARD, speed);
 	motor(2, FORWARD, speed);
 }
 
+void goBackwards(byte speed) {
+	motor(1, FORWARD, speed);
+	motor(2, BACKWARD, speed);
+}
+
 void goTurnR(byte speed) {
-	motor(1, BACKWARD, speed);
+	motor(1, FORWARD, speed);
 	motor(2, FORWARD, speed);
 }
 
@@ -29,7 +29,7 @@ void goArcR(byte speed, byte delta) {
 }
 
 void goTurnL(byte speed) {
-	motor(1, FORWARD, speed);
+	motor(1, BACKWARD, speed);
 	motor(2, BACKWARD, speed);
 }
 
