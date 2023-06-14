@@ -11,7 +11,7 @@ void motor(int nMotor, int command, int speed)
       motorA   = MOTOR_A_1;
       motorB   = MOTOR_B_1;
       break;
-    case 3:
+    case 2:
       motorA   = MOTOR_A_2;
       motorB   = MOTOR_B_2;
       break;
