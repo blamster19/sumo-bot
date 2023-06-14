@@ -8,8 +8,8 @@
 #define SONIC_ECHO2    A3
 #define SONIC_ECHO3    A5
 #define IR_PIN         13
-#define LINE_PIN1      2
-#define LINE_PIN2      3
+#define LINE_PIN1      3
+#define LINE_PIN2      2
 #define MOTOR_A_1      2
 #define MOTOR_B_1      3
 #define MOTOR_A_2      5
