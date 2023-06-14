@@ -24,7 +24,7 @@ void mainLoop() {
 			state = FIND;
 			break;
 		case ROAM:
-			goArcL(maxSpeed - 10, 10);
+			goForward(maxSpeed);
 			state = FIND;
 			break;
 	}
