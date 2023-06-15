@@ -20,8 +20,9 @@
 #define MOTORCLK 4
 #define MOTORENABLE 7
 #define MOTORDATA 8
+#define LED_STATUS     12
 
-#define MAX_SONIC      50
+#define MAX_SONIC      25
 
 #define FORWARD 1
 #define BACKWARD 2
